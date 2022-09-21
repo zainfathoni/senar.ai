@@ -25,8 +25,5 @@ jobs:
       - name: ⛓ Install Node deps
         uses: bahmutov/npm-install@v1
 
-      - name: 🦕 Setup Deno
-        uses: denoland/setup-deno@v1
-
       - name: 🔬 Lint
         run: npm run lint
