@@ -10,7 +10,7 @@ jobs:
     name: 🔬 Lint
     if:
       # ignore all-contributors PRs
-      ${{ github.repository == 'senar-ai/web' && !contains(github.head_ref,
+      ${{ github.repository == 'zainfathoni/senar.ai' && !contains(github.head_ref,
       'all-contributors') }}
     runs-on: ubuntu-latest
     steps:
