@@ -1,0 +1,21 @@
+.cache
+build
+node_modules
+coverage
+dist
+
+# Remix
+build/
+/public/build
+/api/index.js
+/api/index.js.map
+/api/_assets
+
+# Tailwind CSS
+*.css
+
+# Next.js
+.next/
+
+# Senarai Data
+app/data/*.json
