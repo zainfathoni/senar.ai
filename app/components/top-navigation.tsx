@@ -15,8 +15,8 @@ export const senaraiForm = '/go/form'
 const navigation = [
   { name: 'Senarai', href: '/' },
   { name: 'Aktivitas', href: '/activities', priority: true },
+  { name: 'Kontribusi', href: '/contributions', priority: true },
   { name: 'Tentang Kami', href: '/tentang-kami' },
-  { name: 'Kontribusi', href: senaraiForm, priority: true, external: true },
   { name: 'Database Mentah', href: 'https://senar.ai/go/db', external: true },
 ]
 
