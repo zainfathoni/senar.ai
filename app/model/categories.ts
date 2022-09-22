@@ -140,6 +140,6 @@ const uncategorized: Category = {
   iconBackground: 'bg-amber-50',
 }
 
-export const getCategoryByCategorySlug = (categorySlug: string): Category => {
+export const getCategoryByCategorySlug = (categorySlug = ''): Category => {
   return categoriesRecord[categorySlug] ?? uncategorized
 }
