@@ -1,10 +1,9 @@
 import { useMatches } from '@remix-run/react'
-import * as React from 'react'
 import { Grid2Plus } from '../icons/duotone'
 import type { Activity } from '../model/activities'
 import { getCategoryByCategorySlug } from '../model/categories'
 import { classNames } from '../utils/class-names'
-import { Card } from './card'
+import { Card, CardContainer } from './card'
 import { senaraiForm } from './top-navigation'
 
 export function ActivitesGrid({ activities }: { activities: Activity[] }) {
@@ -16,7 +15,7 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
   )}`
   if (activities.length) {
     return (
-      <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <CardContainer>
         {activities.map(
           ({ id, nama, link, ringkasan, image, usia, categorySlug }) => {
             const { icon, iconForeground, iconBackground, title } =
@@ -56,7 +55,7 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
           foregroundColor={category.iconForeground}
           backgroundColor={category.iconBackground}
         />
-      </ul>
+      </CardContainer>
     )
   } else {
     return (

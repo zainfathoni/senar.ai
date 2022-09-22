@@ -8,7 +8,10 @@ export default function Breadcrumbs() {
   const filteredMatches = matches.filter(
     (match) => match.pathname !== '/' || !match.pathname.endsWith('/')
   )
-  if (filteredMatches.length && filteredMatches[0].pathname === '/activities') {
+  if (
+    filteredMatches.length &&
+    ['/activities', '/contributions'].includes(filteredMatches[0].pathname)
+  ) {
     return (
       <nav className="flex" aria-label="Breadcrumbs">
         <ol className="bg-white rounded-md shadow px-6 flex space-x-4 min-w-full">

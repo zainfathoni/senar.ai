@@ -15,9 +15,15 @@ export type CardProps = {
   categorySlug?: string
   image?: string
   icon?: (props: React.SVGProps<SVGSVGElement>) => React.ReactElement
-  foregroundColor?: string
-  backgroundColor?: string
+  foregroundColor: string
+  backgroundColor: string
 }
+
+export const CardContainer = ({ children }: { children: React.ReactNode }) => (
+  <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    {children}
+  </ul>
+)
 
 export const Card: React.FC<CardProps> = ({
   name,
@@ -30,8 +36,8 @@ export const Card: React.FC<CardProps> = ({
   category,
   categorySlug,
   icon: Icon,
-  foregroundColor: iconForeground,
-  backgroundColor: iconBackground,
+  foregroundColor,
+  backgroundColor,
 }) => {
   return (
     <li className="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200">
@@ -45,7 +51,7 @@ export const Card: React.FC<CardProps> = ({
         ) : Icon ? (
           <Icon
             className={classNames(
-              iconForeground,
+              foregroundColor,
               'w-16 h-16 flex-shrink-0 mx-auto'
             )}
           />
@@ -61,8 +67,8 @@ export const Card: React.FC<CardProps> = ({
               <Link
                 to={`/activities/${categorySlug}`}
                 className={classNames(
-                  iconForeground,
-                  iconBackground,
+                  foregroundColor,
+                  backgroundColor,
                   'px-4 py-2 text-sm font-medium rounded-full hover:text-opacity-75'
                 )}
               >
@@ -71,8 +77,8 @@ export const Card: React.FC<CardProps> = ({
             ) : (
               <button
                 className={classNames(
-                  iconForeground,
-                  iconBackground,
+                  foregroundColor,
+                  backgroundColor,
                   'px-4 py-2 text-sm font-medium rounded-full hover:text-opacity-75 cursor-not-allowed'
                 )}
               >

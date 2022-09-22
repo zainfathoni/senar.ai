@@ -27,6 +27,7 @@ export type Category = {
   iconBackground: string
 }
 
+// TODO: migrate categories to the database
 export const categories: Categories = [
   {
     title: 'PAUD',
@@ -140,6 +141,6 @@ const uncategorized: Category = {
   iconBackground: 'bg-amber-50',
 }
 
-export const getCategoryByCategorySlug = (categorySlug: string): Category => {
+export const getCategoryByCategorySlug = (categorySlug = ''): Category => {
   return categoriesRecord[categorySlug] ?? uncategorized
 }

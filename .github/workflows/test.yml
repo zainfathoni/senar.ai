@@ -10,8 +10,8 @@ jobs:
     name: 🔬 Lint
     if:
       # ignore all-contributors PRs
-      ${{ github.repository == 'zainfathoni/senar.ai' && !contains(github.head_ref,
-      'all-contributors') }}
+      ${{ github.repository == 'zainfathoni/senar.ai' &&
+      !contains(github.head_ref, 'all-contributors') }}
     runs-on: ubuntu-latest
     steps:
       - name: 🐑 Clone repository
