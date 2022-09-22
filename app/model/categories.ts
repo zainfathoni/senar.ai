@@ -27,6 +27,7 @@ export type Category = {
   iconBackground: string
 }
 
+// TODO: migrate categories to the database
 export const categories: Categories = [
   {
     title: 'PAUD',

@@ -19,6 +19,12 @@ export type CardProps = {
   backgroundColor: string
 }
 
+export const CardContainer = ({ children }: { children: React.ReactNode }) => (
+  <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    {children}
+  </ul>
+)
+
 export const Card: React.FC<CardProps> = ({
   name,
   description,
