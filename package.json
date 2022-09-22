@@ -8,7 +8,7 @@
     "build:fetch": "npm run fetch",
     "build:css": "npm run generate:css -- --minify",
     "build:remix": "remix build",
-    "dev": "run-p dev:*",
+    "dev": "cross-env DATABASE_URL=file:./dev.db NODE_ENV=development prisma generate --schema=./prisma/schema.sqlite.prisma && run-p dev:*",
     "dev:css": "npm run generate:css -- --watch",
     "dev:remix": "remix dev",
     "fetch": "node --require esbuild-register app/scripts/fetch-db.ts",
