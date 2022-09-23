@@ -18,7 +18,7 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
       <CardContainer>
         {activities.map(
           ({ id, nama, link, ringkasan, image, usia, categorySlug }) => {
-            const { icon, iconForeground, iconBackground, title } =
+            const { icon, foregroundColor, backgroundColor, title } =
               getCategoryByCategorySlug(categorySlug)
             return (
               <Card
@@ -39,8 +39,8 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
                 category={title}
                 categorySlug={categorySlug}
                 icon={icon}
-                foregroundColor={iconForeground}
-                backgroundColor={iconBackground}
+                foregroundColor={foregroundColor}
+                backgroundColor={backgroundColor}
               />
             )
           }
@@ -52,8 +52,8 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
           category={category.title}
           link={addNewActivityLink}
           icon={Grid2Plus}
-          foregroundColor={category.iconForeground}
-          backgroundColor={category.iconBackground}
+          foregroundColor={category.foregroundColor}
+          backgroundColor={category.backgroundColor}
         />
       </CardContainer>
     )
@@ -62,8 +62,8 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
       <div className="text-center bg-white rounded-lg shadow px-5 py-6 sm:px-6">
         <div
           className={classNames(
-            category.iconBackground,
-            category.iconForeground,
+            category.backgroundColor,
+            category.foregroundColor,
             'rounded-xl inline-flex p-4 mb-4 ring-4 ring-white'
           )}
         >

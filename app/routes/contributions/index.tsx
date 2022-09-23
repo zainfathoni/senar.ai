@@ -37,7 +37,7 @@ export default function ContributionsIndex() {
     <CardContainer>
       {contributions?.map(
         ({ id, name, description, url, category: { title, slug } }) => {
-          const { icon, iconForeground, iconBackground } =
+          const { icon, foregroundColor, backgroundColor } =
             getCategoryByCategorySlug(slug)
           return (
             <Card
@@ -51,8 +51,8 @@ export default function ContributionsIndex() {
               category={title}
               categorySlug={slug}
               icon={icon}
-              foregroundColor={iconForeground}
-              backgroundColor={iconBackground}
+              foregroundColor={foregroundColor}
+              backgroundColor={backgroundColor}
             />
           )
         }

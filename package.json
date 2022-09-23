@@ -2,6 +2,9 @@
   "name": "senarai",
   "private": false,
   "sideEffects": false,
+  "prisma": {
+    "seed": "node --require esbuild-register prisma/seed.ts"
+  },
   "scripts": {
     "generate:css": "npx tailwindcss -o ./app/tailwind.css",
     "build": "run-s build:*",
@@ -13,7 +16,8 @@
     "dev:remix": "remix dev",
     "fetch": "node --require esbuild-register app/scripts/fetch-db.ts",
     "format": "pkode format",
-    "lint": "pkode lint"
+    "lint": "pkode lint",
+    "setup": "npm install && prisma migrate reset --force --schema=./prisma/schema.sqlite.prisma"
   },
   "dependencies": {
     "@headlessui/react": "1.7.2",
