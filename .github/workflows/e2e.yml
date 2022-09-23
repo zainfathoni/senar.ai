@@ -55,6 +55,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-playwright-i
 
+      - name: 🥘 Prepare the database and CSS files
+        run: npm run setup:e2e
+
       - name: ▶️ Run end-to-end tests
         run: npm run test:e2e
 
