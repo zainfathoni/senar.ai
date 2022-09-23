@@ -26,8 +26,34 @@ jobs:
       - name: ⛓ Install Node deps
         uses: bahmutov/npm-install@v1
 
-      - name: 🌐 Install Playwright Browsers
-        run: npx playwright install --with-deps
+      - name: 🍎 Install operating system dependencies
+        run: npx playwright install-deps
+
+      - name: 📦 Restore cached Playwright dependencies
+        id: cache-playwright
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/ms-playwright
+          key:
+            ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json')
+            }}-${{ hashFiles('**/playwright.config.ts') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-i
+
+      - name: 🌐 Install Playwright browsers
+        if: steps.cache-playwright.outputs.cache-hit != 'true'
+        run: npx playwright install
+
+      - name: 📦 Cache Playwright dependencies
+        if: steps.cache-playwright.outputs.cache-hit != 'true'
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/ms-playwright
+          key:
+            ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}-${{
+            hashFiles('**/playwright.config.ts') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-i
 
       - name: ▶️ Run end-to-end tests
         run: npm run test:e2e
