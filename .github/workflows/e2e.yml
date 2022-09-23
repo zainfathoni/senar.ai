@@ -44,17 +44,6 @@ jobs:
         if: steps.cache-playwright.outputs.cache-hit != 'true'
         run: npx playwright install
 
-      - name: 📦 Cache Playwright dependencies
-        if: steps.cache-playwright.outputs.cache-hit != 'true'
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/ms-playwright
-          key:
-            ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}-${{
-            hashFiles('**/playwright.config.ts') }}
-          restore-keys: |
-            ${{ runner.os }}-playwright-i
-
       - name: 🥘 Prepare the database and CSS files
         run: npm run setup:e2e
 
