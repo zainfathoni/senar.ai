@@ -18,3 +18,8 @@ node_modules
 /prisma/test.db
 /prisma/*.db-journal
 /prisma/dumps/*
+
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
