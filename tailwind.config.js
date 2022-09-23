@@ -10,7 +10,7 @@ module.exports = {
       rose: colors.rose,
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 }
 
 /* eslint @typescript-eslint/no-var-requires:"off" */
