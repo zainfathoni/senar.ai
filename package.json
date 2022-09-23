@@ -20,7 +20,7 @@
     "format": "pkode format",
     "lint": "pkode lint",
     "setup": "npm install && npm run reset:prisma",
-    "prestart:e2e": "cross-env DATABASE_URL=file:./test.db npm run reset:prisma && npm run build:css",
+    "prestart:e2e": "npm run fetch && cross-env DATABASE_URL=file:./test.db npm run reset:prisma && npm run build:css",
     "start:e2e": "cross-env DATABASE_URL=file:./test.db npm run dev:remix",
     "test:e2e": "playwright test",
     "test:e2e:report": "playwright show report"

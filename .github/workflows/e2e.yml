@@ -1,4 +1,4 @@
-name: ⚙️ End-to-end Tests
+name: ⚙️ End-to-end test
 on:
   push:
     branches: [main]
