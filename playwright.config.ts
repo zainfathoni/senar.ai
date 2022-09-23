@@ -90,7 +90,7 @@ const config: PlaywrightTestConfig<Fixtures> = {
   webServer: {
     command: 'npm run start:e2e',
     url: 'http://localhost:3000/',
-    timeout: 6 * 1000,
+    timeout: 12 * 1000,
     reuseExistingServer: !process.env.CI,
   },
 }
