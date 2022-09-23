@@ -7,12 +7,9 @@ const prisma = new PrismaClient()
 async function main() {
   // create categories from models seed
   const categories = await Promise.all(
-    categoriesSeed.map(async (category) =>
+    categoriesSeed.map(async ({ title, slug, description }) =>
       prisma.category.create({
-        data: {
-          title: category.title,
-          slug: category.slug,
-        },
+        data: { title, slug, description },
       })
     )
   )
