@@ -10,7 +10,8 @@ export function Taxonomy({
 }) {
   const taxonomy = [benua, negara, provinsi, kabupaten, kecamatan, desa]
   const reducedTaxonomy = taxonomy.reduce(
-    (acc, curr) => (acc[acc.length - 1] === curr ? acc : [...acc, curr]),
+    (acc: string[], curr) =>
+      acc[acc.length - 1] === curr ? acc : [...acc, curr],
     []
   )
   const [first, ...rest] = reducedTaxonomy

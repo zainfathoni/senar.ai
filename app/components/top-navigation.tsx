@@ -145,6 +145,8 @@ export const TopNavigation: React.FC<TopNavigationProps> = (
                   <Disclosure.Button
                     key={item.name}
                     as={item.external ? 'a' : Link}
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-expect-error: Property 'href' does not exist on type 'IntrinsicAttributes & Props<"a" | ForwardRefExoticComponent<RemixLinkProps & RefAttributes<HTMLAnchorElement>>
                     href={item.external ? item.href : undefined}
                     to={item.external ? undefined : item.href}
                     className={classNames(
