@@ -132,7 +132,7 @@ export const categoriesRecord = categories.reduce((acc, category) => {
   return acc
 }, {} as Record<string, Category>)
 
-const uncategorized: Category = {
+export const uncategorized: Category = {
   title: 'Belum Terkategorikan',
   slug: 'belum-terkategorikan',
   description: 'Belum teridentifikasi untuk kategori usia tertentu',

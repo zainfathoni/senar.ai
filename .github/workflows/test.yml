@@ -27,3 +27,30 @@ jobs:
 
       - name: 🔬 Lint
         run: npm run lint
+
+  unit-test:
+    name: 🧪 Unit and integration test
+    if:
+      # ignore all-contributors PRs
+      ${{ github.repository == 'zainfathoni/senar.ai' &&
+      !contains(github.head_ref, 'all-contributors') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🐑 Clone repository
+        uses: actions/checkout@v3
+
+      - name: 🦀 Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: ⛓ Install Node deps
+        uses: bahmutov/npm-install@v1
+
+      - name: 🧪 Run unit and integration tests
+        run: npm t
+        env:
+          CI: true
+
+      - name: 📊 Upload code coverage reports to Codecov
+        uses: codecov/codecov-action@v3
