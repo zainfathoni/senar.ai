@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 import { categories as categoriesSeed } from '../app/model/categories'
 import { activities as activitiesSeed } from '../app/model/activities'
+import { ACTIVITY_STATUS } from '~/model/enum'
 
 const prisma = new PrismaClient()
 
@@ -29,6 +30,7 @@ async function main() {
             name: activity.nama,
             description: activity.ringkasan,
             url: activity.link,
+            status: ACTIVITY_STATUS.PUBLISHED,
             categoryId: categoryIdBySlug[activity.categorySlug],
           },
         })

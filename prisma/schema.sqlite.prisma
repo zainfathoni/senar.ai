@@ -24,6 +24,7 @@ model Activity {
   name        String
   description String
   url         String
+  status      String
   categoryId  Int
   category    Category @relation(fields: [categoryId], references: [id])
 }
