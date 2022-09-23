@@ -3,8 +3,9 @@ import type { MetaFunction } from '@remix-run/node'
 import { ContactsGrid } from '../components/contacts-grid'
 import { PageLayout } from '../components/page-layout'
 import { contacts } from '../model/contacts'
+import type { Handle } from '~/model/types'
 
-export const handle = 'Tentang Kami'
+export const handle: Handle = { name: 'Tentang Kami' }
 
 export const meta: MetaFunction = () => {
   return {

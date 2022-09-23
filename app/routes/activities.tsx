@@ -2,8 +2,9 @@ import { Outlet, useMatches } from '@remix-run/react'
 import * as React from 'react'
 import { PageLayout } from '../components/page-layout'
 import { activities, Activities } from '../model/activities'
+import type { Handle } from '~/model/types'
 
-export const handle = 'Aktivitas'
+export const handle: Handle = { name: 'Aktivitas' }
 
 export type ActivitiesContextType = {
   activities: Activities
