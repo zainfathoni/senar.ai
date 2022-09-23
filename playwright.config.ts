@@ -1,5 +1,6 @@
-import type { PlaywrightTestConfig } from '@playwright/test';
-import { devices } from '@playwright/test';
+import type { PlaywrightTestConfig } from '@playwright/test'
+import { devices } from '@playwright/test'
+import { Fixtures } from './e2e/base-test'
 
 /**
  * Read environment variables from file.
@@ -10,7 +11,7 @@ import { devices } from '@playwright/test';
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-const config: PlaywrightTestConfig = {
+const config: PlaywrightTestConfig<Fixtures> = {
   testDir: './e2e',
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
@@ -19,7 +20,7 @@ const config: PlaywrightTestConfig = {
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 5000
+    timeout: 5000,
   },
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -36,7 +37,7 @@ const config: PlaywrightTestConfig = {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://localhost:3000',
+    baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -44,64 +45,54 @@ const config: PlaywrightTestConfig = {
 
   /* Configure projects for major browsers */
   projects: [
+    // "Pixel 4" tests use Chromium browser.
     {
-      name: 'chromium',
+      name: 'Pixel 4',
       use: {
-        ...devices['Desktop Chrome'],
+        browserName: 'chromium',
+        ...devices['Pixel 4'],
       },
     },
-
+    // "iPhone 11" tests use WebKit browser.
+    {
+      name: 'iPhone 11',
+      use: {
+        browserName: 'webkit',
+        ...devices['iPhone 11'],
+      },
+    },
+    // Desktop tests use Firefox browser.
     {
       name: 'firefox',
-      use: {
-        ...devices['Desktop Firefox'],
-      },
+      use: { ...devices['Desktop Firefox'] },
     },
-
+    // Desktop tests use Safari browser.
     {
       name: 'webkit',
-      use: {
-        ...devices['Desktop Safari'],
-      },
+      use: { ...devices['Desktop Safari'] },
     },
 
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: {
-    //     ...devices['Pixel 5'],
-    //   },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: {
-    //     ...devices['iPhone 12'],
-    //   },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: {
-    //     channel: 'msedge',
-    //   },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: {
-    //     channel: 'chrome',
-    //   },
-    // },
+    // Desktop tests use Chromium browser with JavaScript disabled.
+    {
+      name: 'noscript',
+      use: {
+        ...devices['Desktop Chrome'],
+        javaScriptEnabled: false,
+        noscript: true,
+      },
+    },
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
   // outputDir: 'test-results/',
 
   /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   port: 3000,
-  // },
-};
+  webServer: {
+    command: 'npm run start:e2e',
+    url: 'http://localhost:3000/',
+    timeout: 6 * 1000,
+    reuseExistingServer: !process.env.CI,
+  },
+}
 
-export default config;
+export default config
