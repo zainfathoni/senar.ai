@@ -27,7 +27,8 @@
     "test": "is-ci-cli test:coverage test:watch",
     "test:watch": "vitest",
     "test:verbose": "vitest --reporter=verbose",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@headlessui/react": "1.7.2",
@@ -50,6 +51,7 @@
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",
     "@testing-library/user-event": "14.4.3",
+    "@types/jsdom": "20.0.0",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@types/tailwindcss": "3.1.0",

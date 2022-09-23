@@ -15,10 +15,13 @@ async function main() {
     )
   )
 
-  const categoryIdBySlug = categories.reduce((acc, category) => {
-    acc[category.slug] = category.id
-    return acc
-  }, {})
+  const categoryIdBySlug = categories.reduce(
+    (acc: Record<string, number>, category) => {
+      acc[category.slug ?? 'uncategorized'] = category.id
+      return acc
+    },
+    {}
+  )
 
   // create activities from models seed
   await Promise.all(
