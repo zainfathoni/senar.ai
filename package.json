@@ -24,7 +24,8 @@
     "start:e2e": "cross-env DATABASE_URL=file:./test.db npm run dev:remix",
     "test:e2e": "playwright test",
     "test:e2e:report": "playwright show report",
-    "test": "vitest",
+    "test": "is-ci-cli test:coverage test:watch",
+    "test:watch": "vitest",
     "test:verbose": "vitest --reporter=verbose",
     "test:coverage": "vitest --coverage"
   },
@@ -60,6 +61,7 @@
     "cross-fetch": "3.1.5",
     "esbuild": "0.15.8",
     "esbuild-register": "3.3.3",
+    "is-ci-cli": "2.2.0",
     "jsdom": "20.0.0",
     "npm-run-all": "4.1.5",
     "ora": "6.1.2",
