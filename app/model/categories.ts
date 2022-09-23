@@ -127,10 +127,13 @@ export const categories: Categories = [
   },
 ]
 
-export const categoriesRecord = categories.reduce((acc, category) => {
-  acc[category.slug] = category
-  return acc
-}, {} as Record<string, Category>)
+export const categoriesRecord: Record<string, Category> = categories.reduce(
+  (acc, category) => {
+    acc[category.slug] = category
+    return acc
+  },
+  {} as Record<string, Category>
+)
 
 export const uncategorized: Category = {
   title: 'Belum Terkategorikan',
