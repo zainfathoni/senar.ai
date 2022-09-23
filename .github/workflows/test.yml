@@ -43,6 +43,12 @@ jobs:
       - name: ⛓ Install Node deps
         uses: bahmutov/npm-install@v1
 
+      - name: 🥘 Prepare the mock data
+        run: npm run fetch
+
+      - name: 🍽 Generate type definitions from Prisma
+        run: npm run generate:prisma
+
       - name: 🔍 Type check
         run: npm run type-check
         env:
