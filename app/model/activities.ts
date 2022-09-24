@@ -1,6 +1,8 @@
 /* eslint-disable-next-line import/no-unresolved */
 import database from '../data/senarai-db.json'
 import { db } from '../utils/db.server'
+import { getCategoryBySlug } from './categories'
+import { ACTIVITY_STATUS } from './enum'
 
 export type Activities = Activity[]
 
@@ -40,4 +42,36 @@ export async function getAllContributions() {
   })
 
   return contributions
+}
+
+export type NewContribution = {
+  categorySlug: string
+  name: string
+  description: string
+  url: string
+}
+
+export async function createActivity({
+  categorySlug,
+  name,
+  description,
+  url,
+}: NewContribution) {
+  const category = await getCategoryBySlug(categorySlug)
+
+  if (!category) {
+    return null
+  }
+
+  const contribution = await db.activity.create({
+    data: {
+      categoryId: category.id,
+      name,
+      description,
+      url,
+      status: ACTIVITY_STATUS.DRAFT,
+    },
+  })
+
+  return contribution
 }

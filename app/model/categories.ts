@@ -158,3 +158,13 @@ export async function getAllCategories() {
 
   return categories
 }
+
+export async function getCategoryBySlug(slug = uncategorized.slug) {
+  const category = await db.category.findFirst({
+    where: {
+      slug,
+    },
+  })
+
+  return category
+}
