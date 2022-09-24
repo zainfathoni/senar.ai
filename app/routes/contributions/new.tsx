@@ -34,16 +34,20 @@ export const action: ActionFunction = async ({ request }) => {
     return { formError: 'Form not submitted correctly.' }
   }
 
-  const activity = await createActivity({
+  const newActivity = {
     categorySlug,
     name,
     description,
     url,
-  })
+  }
+  const activity = await createActivity(newActivity)
 
   console.log(activity)
+  if (!activity) {
+    throw json({ newActivity })
+  }
 
-  return redirect('/contributions')
+  return redirect(`/contributions/${activity.id}`)
 }
 
 export default function NewContribution() {

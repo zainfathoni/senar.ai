@@ -75,3 +75,13 @@ export async function createActivity({
 
   return contribution
 }
+
+export async function getActivityById(activityId = '') {
+  const activity = await db.activity.findFirst({
+    where: {
+      id: activityId,
+    },
+  })
+
+  return activity
+}
