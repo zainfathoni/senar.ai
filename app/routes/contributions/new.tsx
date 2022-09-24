@@ -1,14 +1,61 @@
+import { Category } from '@prisma/client'
+import { ActionFunction, LoaderFunction, redirect, json } from '@remix-run/node'
+import { useLoaderData } from '@remix-run/react'
 import { PrimaryButton } from '~/components/button'
 import { SecondaryButtonLink } from '~/components/button-link'
 import { Input, Instruction, Label } from '~/components/form-elements'
+import { createActivity } from '~/model/activities'
+import { getAllCategories } from '~/model/categories'
 import { Handle } from '~/model/types'
+
+type Categories = Array<Category>
 
 export const handle: Handle = { name: 'Tambahkan Aktivitas Baru' }
 
+export const loader: LoaderFunction = async () => {
+  const categories = await getAllCategories()
+
+  return json({ categories })
+}
+
+export const action: ActionFunction = async ({ request }) => {
+  const form = await request.formData()
+  const categorySlug = form.get('category')
+  const name = form.get('name')
+  const description = form.get('description')
+  const url = form.get('url')
+
+  if (
+    typeof categorySlug !== 'string' ||
+    typeof name !== 'string' ||
+    typeof description !== 'string' ||
+    typeof url !== 'string'
+  ) {
+    return { formError: 'Form not submitted correctly.' }
+  }
+
+  const newActivity = {
+    categorySlug,
+    name,
+    description,
+    url,
+  }
+  const activity = await createActivity(newActivity)
+
+  console.log(activity)
+  if (!activity) {
+    throw json({ newActivity })
+  }
+
+  return redirect(`/contributions/${activity.id}`)
+}
+
 export default function NewContribution() {
+  const { categories } = useLoaderData<{ categories: Categories }>()
+
   return (
     <div className="p-8 rounded-lg bg-white overflow-hidden shadow">
-      <form className="space-y-8 divide-y divide-gray-200">
+      <form method="post" className="space-y-8 divide-y divide-gray-200">
         <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
           <div className="space-y-6 sm:space-y-5">
             <div>
@@ -30,10 +77,11 @@ export default function NewContribution() {
                     name="category"
                     className="sm:max-w-xs"
                   >
-                    <option>PAUD</option>
-                    <option>PAUD ke atas</option>
-                    <option>SD</option>
-                    <option>SD ke atas</option>
+                    {categories.map(({ id, title, slug }) => (
+                      <option key={id} value={slug}>
+                        {title}
+                      </option>
+                    ))}
                   </Input>
                 </div>
               </div>
