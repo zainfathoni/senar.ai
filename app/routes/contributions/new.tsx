@@ -1,11 +1,25 @@
+import { Category } from '@prisma/client'
+import { json, LoaderFunction } from '@remix-run/node'
+import { useLoaderData } from '@remix-run/react'
 import { PrimaryButton } from '~/components/button'
 import { SecondaryButtonLink } from '~/components/button-link'
 import { Input, Instruction, Label } from '~/components/form-elements'
+import { getAllCategories } from '~/model/categories'
 import { Handle } from '~/model/types'
+
+type Categories = Array<Category>
 
 export const handle: Handle = { name: 'Tambahkan Aktivitas Baru' }
 
+export const loader: LoaderFunction = async () => {
+  const categories = await getAllCategories()
+
+  return json({ categories })
+}
+
 export default function NewContribution() {
+  const { categories } = useLoaderData<{ categories: Categories }>()
+
   return (
     <div className="p-8 rounded-lg bg-white overflow-hidden shadow">
       <form className="space-y-8 divide-y divide-gray-200">
@@ -30,10 +44,11 @@ export default function NewContribution() {
                     name="category"
                     className="sm:max-w-xs"
                   >
-                    <option>PAUD</option>
-                    <option>PAUD ke atas</option>
-                    <option>SD</option>
-                    <option>SD ke atas</option>
+                    {categories.map(({ id, title, slug }) => (
+                      <option key={id} value={slug}>
+                        {title}
+                      </option>
+                    ))}
                   </Input>
                 </div>
               </div>

@@ -15,6 +15,7 @@ import {
   SchoolFlag as LSchoolFlag,
   BuildingColumns as LBuildingColumns,
 } from '../icons/light'
+import { db } from '../utils/db.server'
 
 export type Categories = Category[]
 
@@ -146,4 +147,14 @@ export const uncategorized: Category = {
 
 export const getCategoryByCategorySlug = (categorySlug = ''): Category => {
   return categoriesRecord[categorySlug] ?? uncategorized
+}
+
+export async function getAllCategories() {
+  const categories = await db.category.findMany({
+    orderBy: {
+      id: 'asc',
+    },
+  })
+
+  return categories
 }
