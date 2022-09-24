@@ -1,6 +1,6 @@
 import { Category } from '@prisma/client'
 import { ActionFunction, LoaderFunction, redirect, json } from '@remix-run/node'
-import { useLoaderData } from '@remix-run/react'
+import { Form, useLoaderData } from '@remix-run/react'
 import { PrimaryButton } from '~/components/button'
 import { SecondaryButtonLink } from '~/components/button-link'
 import { Input, Instruction, Label } from '~/components/form-elements'
@@ -55,7 +55,7 @@ export default function NewContribution() {
 
   return (
     <div className="p-8 rounded-lg bg-white overflow-hidden shadow">
-      <form method="post" className="space-y-8 divide-y divide-gray-200">
+      <Form method="post" className="space-y-8 divide-y divide-gray-200">
         <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
           <div className="space-y-6 sm:space-y-5">
             <div>
@@ -138,7 +138,7 @@ export default function NewContribution() {
             <PrimaryButton type="submit">Simpan</PrimaryButton>
           </div>
         </div>
-      </form>
+      </Form>
     </div>
   )
 }
