@@ -81,6 +81,14 @@ export async function getActivityById(activityId = '') {
     where: {
       id: activityId,
     },
+    include: {
+      category: {
+        select: {
+          title: true,
+          slug: true,
+        },
+      },
+    },
   })
 
   return activity
