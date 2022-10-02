@@ -32,11 +32,11 @@ then automatically be deployed by Vercel, through its
 
 ## Development
 
-To run your Remix app locally, make sure your project's local dependencies are
-installed:
+To run the app locally, make sure your project's already run the setup scripts
+(this will install dependencies and setup the database):
 
 ```sh
-npm install
+npm run setup
 ```
 
 Afterwards, start the Remix development server like so:
