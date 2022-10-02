@@ -9,7 +9,7 @@ export const handle: Handle = { name: 'Tentang Kami' }
 
 export const meta: MetaFunction = () => {
   return {
-    title: `Senarai | ${handle}`,
+    title: `Senarai | ${handle.name}`,
     description: `Sekilas tentang kurator Senarai`,
   }
 }
