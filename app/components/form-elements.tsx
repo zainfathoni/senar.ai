@@ -63,10 +63,20 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   )
 })
 
-export function Instruction({ children }: { children?: string | null }) {
+export function Instruction({
+  children,
+  id,
+}: {
+  children?: string | null
+  id?: string
+}) {
   if (!children) {
     return null
   }
 
-  return <p className="mt-2 text-sm text-gray-600">{children}</p>
+  return (
+    <p className="mt-2 text-sm text-gray-600" id={id}>
+      {children}
+    </p>
+  )
 }

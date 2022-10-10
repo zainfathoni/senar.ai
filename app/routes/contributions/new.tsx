@@ -102,8 +102,9 @@ export default function NewContribution() {
                     name="description"
                     rows={3}
                     defaultValue={''}
+                    aria-describedby="description-hint"
                   />
-                  <Instruction>
+                  <Instruction id="description-hint">
                     Tuliskan deskripsi ringkas mengenai aktivitas yang Anda
                     usulkan.
                   </Instruction>
