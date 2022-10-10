@@ -10,7 +10,7 @@ import { activityBuilder } from '../../model/__mocks__/activities'
 import { categoryBuilder } from '../../model/__mocks__/categories'
 import { uncategorized } from '../../model/categories'
 
-describe('Breadcrumbs', () => {
+describe('Card', () => {
   it('renders Card component correctly', () => {
     const { name, description, url } = activityBuilder()
     const { title } = categoryBuilder()
