@@ -1,5 +1,4 @@
 import { Category } from '@prisma/client'
-import { Form } from '@remix-run/react'
 import { PrimaryButton } from './button'
 import { SecondaryButtonLink } from './button-link'
 import { Input, Instruction, Label } from './form-elements'
@@ -8,9 +7,9 @@ type ContributionFormProps = {
   categories: Omit<Category, 'id' | 'createdAt' | 'updatedAt'>[]
 }
 
-export function ContributionForm({ categories }: ContributionFormProps) {
+export function ContributionFormFields({ categories }: ContributionFormProps) {
   return (
-    <Form method="post" className="space-y-8 divide-y divide-gray-200">
+    <>
       <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
         <div className="space-y-6 sm:space-y-5">
           <div>
@@ -94,6 +93,6 @@ export function ContributionForm({ categories }: ContributionFormProps) {
           <PrimaryButton type="submit">Simpan</PrimaryButton>
         </div>
       </div>
-    </Form>
+    </>
   )
 }
