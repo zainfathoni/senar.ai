@@ -5,7 +5,7 @@ import { SecondaryButtonLink } from './button-link'
 import { Input, Instruction, Label } from './form-elements'
 
 type ContributionFormProps = {
-  categories: Omit<Category, 'createdAt' | 'updatedAt'>[]
+  categories: Omit<Category, 'id' | 'createdAt' | 'updatedAt'>[]
 }
 
 export function ContributionForm({ categories }: ContributionFormProps) {
@@ -32,8 +32,8 @@ export function ContributionForm({ categories }: ContributionFormProps) {
                   name="category"
                   className="sm:max-w-xs"
                 >
-                  {categories.map(({ id, title, slug }) => (
-                    <option key={id} value={slug}>
+                  {categories.map(({ title, slug }) => (
+                    <option key={slug} value={slug}>
                       {title}
                     </option>
                   ))}
