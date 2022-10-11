@@ -7,21 +7,16 @@ import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import { vi } from 'vitest'
 import { ContributionFormFields } from '../contribution-form-fields'
+import { categoryBuilder } from '~/model/__mocks__/categories'
+import { activityBuilder } from '~/model/__mocks__/activities'
 
 describe('ContributionFormFields', () => {
   it('submits form values correctly', async () => {
-    const categories = [
-      {
-        slug: 'belajar-testing',
-        title: 'Belajar Testing',
-        description: 'Belajar Testing bersama eFishery',
-      },
-      {
-        slug: 'belajar-saja',
-        title: 'Belajar Saja',
-        description: 'Belajar Saja bersama eFishery',
-      },
-    ]
+    // Fixtures
+    const categories = [categoryBuilder(), categoryBuilder()]
+    const activity = activityBuilder()
+
+    const [firstCategory, secondCategory] = categories
     const onSubmit = vi.fn((e) => {
       e.preventDefault()
     })
@@ -37,19 +32,19 @@ describe('ContributionFormFields', () => {
     const categoryCombobox = screen.getByRole('combobox', {
       name: /kategori usia/i,
     })
-    await userEvent.selectOptions(categoryCombobox, ['Belajar Testing'])
+    await userEvent.selectOptions(categoryCombobox, [firstCategory.title])
     const selectedOption: HTMLOptionElement = screen.getByRole('option', {
-      name: 'Belajar Testing',
+      name: firstCategory.title,
     })
     expect(selectedOption.selected).toBe(true)
     const nonSelectedOption: HTMLOptionElement = screen.getByRole('option', {
-      name: 'Belajar Saja',
+      name: secondCategory.title,
     })
     expect(nonSelectedOption.selected).toBe(false)
 
     const nameInput = screen.getByRole('textbox', { name: /nama kegiatan/i })
-    await userEvent.type(nameInput, 'Integration Test')
-    expect(nameInput).toHaveValue('Integration Test')
+    await userEvent.type(nameInput, activity.name)
+    expect(nameInput).toHaveValue(activity.name)
 
     const submitButton = await screen.getByRole('button', { name: /simpan/i })
     await userEvent.click(submitButton)
