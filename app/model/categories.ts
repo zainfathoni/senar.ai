@@ -17,9 +17,9 @@ import {
 } from '../icons/light'
 import { db } from '../utils/db.server'
 
-export type Categories = Category[]
+export type CategoriesWithIcon = CategoryWithIcon[]
 
-export type Category = {
+export type CategoryWithIcon = {
   title: string
   slug: string
   description: string
@@ -29,7 +29,7 @@ export type Category = {
 }
 
 // TODO: migrate categories to the database
-export const categories: Categories = [
+export const categories: CategoriesWithIcon = [
   {
     title: 'PAUD',
     slug: 'paud',
@@ -128,15 +128,13 @@ export const categories: Categories = [
   },
 ]
 
-export const categoriesRecord: Record<string, Category> = categories.reduce(
-  (acc, category) => {
+export const categoriesRecord: Record<string, CategoryWithIcon> =
+  categories.reduce((acc, category) => {
     acc[category.slug] = category
     return acc
-  },
-  {} as Record<string, Category>
-)
+  }, {} as Record<string, CategoryWithIcon>)
 
-export const uncategorized: Category = {
+export const uncategorized: CategoryWithIcon = {
   title: 'Belum Terkategorikan',
   slug: 'belum-terkategorikan',
   description: 'Belum teridentifikasi untuk kategori usia tertentu',
@@ -145,7 +143,9 @@ export const uncategorized: Category = {
   backgroundColor: 'bg-amber-50',
 }
 
-export const getCategoryByCategorySlug = (categorySlug = ''): Category => {
+export const getCategoryByCategorySlug = (
+  categorySlug = ''
+): CategoryWithIcon => {
   return categoriesRecord[categorySlug] ?? uncategorized
 }
 

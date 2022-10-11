@@ -1,9 +1,13 @@
 import * as React from 'react'
 import { Link } from '@remix-run/react'
 import { classNames } from '../utils/class-names'
-import { Categories } from '../model/categories'
+import { CategoriesWithIcon } from '../model/categories'
 
-export function ActionCards({ categories }: { categories: Categories }) {
+export function ActionCards({
+  categories,
+}: {
+  categories: CategoriesWithIcon
+}) {
   return (
     <div className="rounded-lg bg-gray-200 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-3 sm:gap-px">
       {categories.map((category, categoryIdx) => (

@@ -44,7 +44,6 @@ export default function ViewContribution() {
         foregroundColor={foregroundColor}
         backgroundColor={backgroundColor}
       />
-      )
     </CardContainer>
   )
 }

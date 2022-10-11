@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker'
 import { Category } from '@prisma/client'
 
 export const categoryBuilder = build<
-  Omit<Category, 'id' | 'createdAt' | 'updatedAt' | 'categoryId'>
+  Omit<Category, 'id' | 'createdAt' | 'updatedAt'>
 >({
   fields: {
     title: perBuild(() => faker.lorem.text()),
