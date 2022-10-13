@@ -11,7 +11,7 @@ test.describe('Senarai Homepage E2E Test', () => {
         await homePage.open();
         await expect(page).toHaveURL('/');
         await expect(page).toHaveTitle(/Senarai/);
-    })
+    });
 
     test('user should be able to see all activities', async () => {
         await expect(homePage.activityCard).toHaveText([

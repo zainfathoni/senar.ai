@@ -1,4 +1,4 @@
-import { Page, Locator, expect } from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
 
 export class HomePage {
   readonly page: Page;
@@ -8,7 +8,7 @@ export class HomePage {
   constructor(page: Page) {
     this.page = page;
     this.activityCard = page.locator('h3.text-lg.font-medium');
-    this.paudActivity = page.locator('text=PAUDPendidikan Anak Usia Dini >> span')
+    this.paudActivity = page.locator('text=PAUDPendidikan Anak Usia Dini >> span');
   }
 
   async open() {
