@@ -1,6 +1,6 @@
 # Senar.ai
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A crowdsourcing platform for children education.
@@ -108,6 +108,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tbody>
     <tr>
       <td align="center"><a href="http://iamyuu.dev"><img src="https://avatars.githubusercontent.com/u/45778229?v=4?s=100" width="100px;" alt="Yusuf"/><br /><sub><b>Yusuf</b></sub></a><br /><a href="https://github.com/zainfathoni/senar.ai/commits?author=iamyuu" title="Documentation">📖</a> <a href="https://github.com/zainfathoni/senar.ai/issues?q=author%3Aiamyuu" title="Bug reports">🐛</a></td>
+      <td align="center"><a href="http://depapp.github.io"><img src="https://avatars.githubusercontent.com/u/6134774?v=4?s=100" width="100px;" alt="depa panjie purnama"/><br /><sub><b>depa panjie purnama</b></sub></a><br /><a href="https://github.com/zainfathoni/senar.ai/commits?author=depapp" title="Tests">⚠️</a></td>
     </tr>
   </tbody>
 </table>
