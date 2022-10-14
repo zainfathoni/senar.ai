@@ -9,9 +9,7 @@ jobs:
   lint:
     name: 🔬 Lint
     if:
-      # ignore all-contributors PRs
-      ${{ github.repository == 'zainfathoni/senar.ai' &&
-      !contains(github.head_ref, 'all-contributors') }}
+      ${{ github.repository == 'zainfathoni/senar.ai' }}
     runs-on: ubuntu-latest
     steps:
       - name: 🐑 Clone repository
@@ -57,9 +55,7 @@ jobs:
   unit-test:
     name: 🧪 Unit and integration test
     if:
-      # ignore all-contributors PRs
-      ${{ github.repository == 'zainfathoni/senar.ai' &&
-      !contains(github.head_ref, 'all-contributors') }}
+      ${{ github.repository == 'zainfathoni/senar.ai' }}
     runs-on: ubuntu-latest
     steps:
       - name: 🐑 Clone repository
