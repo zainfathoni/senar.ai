@@ -107,7 +107,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tbody>
     <tr>
-      <td align="center"><a href="http://iamyuu.dev"><img src="https://avatars.githubusercontent.com/u/45778229?v=4?s=100" width="100px;" alt="Yusuf"/><br /><sub><b>Yusuf</b></sub></a><br /><a href="https://github.com/zainfathoni/senar.ai/commits?author=iamyuu" title="Documentation">📖</a> <a href="https://github.com/zainfathoni/senar.ai/issues?q=author%3Aiamyuu" title="Bug reports">🐛</a></td>
+      <td align="center"><a href="http://iamyuu.dev"><img src="https://avatars.githubusercontent.com/u/45778229?v=4?s=100" width="100px;" alt="Yusuf"/><br /><sub><b>Yusuf</b></sub></a><br /><a href="https://github.com/zainfathoni/senar.ai/commits?author=iamyuu" title="Documentation">📖</a> <a href="https://github.com/zainfathoni/senar.ai/issues?q=author%3Aiamyuu" title="Bug reports">🐛</a> <a href="https://github.com/zainfathoni/senar.ai/commits?author=iamyuu" title="Code">💻</a> <a href="https://github.com/zainfathoni/senar.ai/commits?author=iamyuu" title="Tests">⚠️</a></td>
       <td align="center"><a href="http://depapp.github.io"><img src="https://avatars.githubusercontent.com/u/6134774?v=4?s=100" width="100px;" alt="depa panjie purnama"/><br /><sub><b>depa panjie purnama</b></sub></a><br /><a href="https://github.com/zainfathoni/senar.ai/commits?author=depapp" title="Tests">⚠️</a></td>
     </tr>
   </tbody>

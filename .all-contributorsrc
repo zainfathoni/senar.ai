@@ -13,7 +13,9 @@
       "profile": "http://iamyuu.dev",
       "contributions": [
         "doc",
-        "bug"
+        "bug",
+        "code",
+        "test"
       ]
     },
     {
