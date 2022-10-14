@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "iamyuu",
+      "name": "Yusuf",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45778229?v=4",
+      "profile": "http://iamyuu.dev",
+      "contributions": [
+        "doc",
+        "bug"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "senar.ai",
+  "projectOwner": "zainfathoni"
+}
