@@ -45,7 +45,7 @@
     "@faker-js/faker": "7.5.0",
     "@jackfranklin/test-data-bot": "2.0.0",
     "@playwright-testing-library/test": "4.4.0",
-    "@playwright/test": "1.26.0",
+    "@playwright/test": "1.27.1",
     "@remix-run/dev": "^1.7.2",
     "@remix-run/eslint-config": "^1.7.2",
     "@remix-run/serve": "^1.7.2",
