@@ -1,4 +1,7 @@
 # Senar.ai
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A crowdsourcing platform for children education.
 
@@ -93,3 +96,25 @@ Commands to know:
   connection to a database branch for a local client
 - `pscale database dump <DATABASE_NAME> <BRANCH_NAME> --output prisma/dumps/xx` -
   backup and dump the specified database
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center"><a href="http://iamyuu.dev"><img src="https://avatars.githubusercontent.com/u/45778229?v=4?s=100" width="100px;" alt="Yusuf"/><br /><sub><b>Yusuf</b></sub></a><br /><a href="https://github.com/zainfathoni/senar.ai/commits?author=iamyuu" title="Documentation">📖</a> <a href="https://github.com/zainfathoni/senar.ai/issues?q=author%3Aiamyuu" title="Bug reports">🐛</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
