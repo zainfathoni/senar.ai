@@ -1,27 +1,39 @@
-import { test } from './base-test'
+import { test } from './base-test';
+import { HomePage } from './pages/home.page';
 
-const { expect } = test
+const { expect } = test;
 
-test('Homepage contains Senarai title', async ({
-  page,
-  queries: { getByRole },
-}) => {
-  await page.goto('/')
+test.describe('Senarai Homepage E2E Test', () => {
+    let homePage: HomePage;
 
-  // Expect the title to be Senari.
-  await expect(page).toHaveTitle(/Senarai/)
+    test.beforeEach(async ({ page }) => {
+        homePage = new HomePage(page);
+        await homePage.open();
+        await expect(page).toHaveURL('/');
+        await expect(page).toHaveTitle(/Senarai/);
+    });
 
-  // Locate PAUD text (case insensitive).
-  const paud = await getByRole('link', {
-    name: /^paud$/i,
-  })
+    test('user should be able to see all activities', async () => {
+        await expect(homePage.activityCard).toHaveText([
+            `Senarai`,
+            `PAUD`,
+            `PAUD ke atas`,
+            `SD`,
+            `SD ke atas`,
+            `SMP`,
+            `SMP ke atas`,
+            `SMA`,
+            `SMA ke atas`,
+            `Kuliah`,
+            `Profesional`,
+            `Semua Usia`,
+            `For Parents`,
+        ]);
+    });
 
-  // Expect the attribute "to be strictly equal" to the value.
-  await expect(paud).toHaveAttribute('href', '/activities/paud')
-
-  // Click the PAUD link.
-  await paud.click()
-
-  // Expects the new URL to be correct.
-  await expect(page).toHaveURL('/activities/paud')
-})
+    test('user should be able to navigate to an activity', async ({ page }) => {
+        await homePage.goToPaudActivity();
+        await expect(page).toHaveURL('/activities/paud');
+        await expect(page).toHaveTitle(/Senarai | Aktivitas PAUD/);
+    });
+});
