@@ -15,6 +15,15 @@
         "doc",
         "bug"
       ]
+    },
+    {
+      "login": "depapp",
+      "name": "depa panjie purnama",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6134774?v=4",
+      "profile": "http://depapp.github.io",
+      "contributions": [
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
