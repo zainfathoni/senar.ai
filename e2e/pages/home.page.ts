@@ -7,8 +7,10 @@ export class HomePage {
 
   constructor(page: Page) {
     this.page = page;
-    this.activityCard = page.locator('h3.text-lg.font-medium');
-    this.paudActivity = page.locator('text=PAUDPendidikan Anak Usia Dini >> span');
+    this.activityCard = page.getByRole('heading');
+    this.paudActivity = page.getByRole('link', {
+      name: /^paud$/i,
+    });
   }
 
   async open() {

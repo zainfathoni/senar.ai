@@ -15,6 +15,7 @@ test.describe('Senarai Homepage E2E Test', () => {
 
     test('user should be able to see all activities', async () => {
         await expect(homePage.activityCard).toHaveText([
+            `Senarai`,
             `PAUD`,
             `PAUD ke atas`,
             `SD`,
