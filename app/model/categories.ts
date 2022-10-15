@@ -134,6 +134,23 @@ export const categories: CategoriesWithIcon = [
   },
 ]
 
+export type CategoryStyle = Pick<
+  CategoryWithIcon,
+  'icon' | 'foregroundColor' | 'backgroundColor'
+>
+
+export const categoriesStyleMap = categories.reduce(
+  (acc, { slug, icon, foregroundColor, backgroundColor }) => {
+    acc[slug] = {
+      icon,
+      foregroundColor,
+      backgroundColor,
+    }
+    return acc
+  },
+  {} as Record<string, CategoryStyle>
+)
+
 export const categoriesRecord: Record<string, CategoryWithIcon> =
   categories.reduce((acc, category) => {
     acc[category.slug] = category
