@@ -192,6 +192,31 @@ export async function getAllCategories() {
   return categories
 }
 
+export async function findAllCategories(keyword: string) {
+  const categories = await db.category.findMany({
+    where: {
+      OR: [
+        {
+          slug: {
+            contains: keyword,
+          },
+          title: {
+            contains: keyword,
+          },
+          description: {
+            contains: keyword,
+          },
+        },
+      ],
+    },
+    orderBy: {
+      id: 'asc',
+    },
+  })
+
+  return categories
+}
+
 export async function getCategoryBySlug(slug = uncategorized.slug) {
   const category = await db.category.findFirst({
     where: {

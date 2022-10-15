@@ -5,28 +5,19 @@ import { useLoaderData } from '@remix-run/react'
 import * as React from 'react'
 import { ActionCards } from '../components/action-cards'
 import { PageLayout } from '../components/page-layout'
-import { categoriesStyleMap, getAllCategories } from '../model/categories'
+import { categoriesStyleMap, findAllCategories } from '../model/categories'
 
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url)
   const keyword = url.searchParams.get('keyword')
 
-  console.log(keyword)
+  if (typeof keyword !== 'string') {
+    return { formError: 'Form not submitted correctly.' }
+  }
 
-  const categories = await getAllCategories()
+  const categories = await findAllCategories(keyword.toLowerCase())
 
-  const filteredCategories = categories.filter((category) => {
-    if (keyword) {
-      return (
-        category.title.toLowerCase().includes(keyword.toLowerCase()) ||
-        category.description.toLowerCase().includes(keyword.toLowerCase())
-      )
-    } else {
-      return true
-    }
-  })
-
-  return json({ keyword, categories: filteredCategories })
+  return json({ keyword, categories })
 }
 
 export default function Index() {
