@@ -23,12 +23,13 @@ const navigation = [
 export type TopNavigationProps = {
   keyword?: string
   setKeyword?: (keyword: string) => void
+  searchMode: 'client' | 'server'
 }
 
-const SearchBar = ({ keyword, setKeyword }: TopNavigationProps) => {
+const SearchBar = ({ keyword, setKeyword, searchMode }: TopNavigationProps) => {
   return (
-    <div className="w-full lg:max-w-xs">
-      <label htmlFor="search" className="sr-only">
+    <form method="get" className="w-full lg:max-w-xs">
+      <label htmlFor="keyword" className="sr-only">
         Cari
       </label>
       {setKeyword ? (
@@ -41,13 +42,27 @@ const SearchBar = ({ keyword, setKeyword }: TopNavigationProps) => {
             className="block w-full bg-white py-2 pl-10 pr-3 border border-transparent rounded-md leading-5 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white focus:border-white sm:text-sm"
             placeholder="Cari"
             type="search"
-            name="search"
+            name="keyword"
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
           />
         </div>
+      ) : searchMode === 'server' ? (
+        <div className="relative text-gray-400 focus-within:text-gray-600">
+          <div className="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
+            <MagnifyingGlass className="h-5 w-5" aria-hidden="true" />
+          </div>
+          <input
+            id="search"
+            className="block w-full bg-white py-2 pl-10 pr-3 border border-transparent rounded-md leading-5 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white focus:border-white sm:text-sm"
+            placeholder="Cari"
+            type="search"
+            name="keyword"
+            defaultValue={keyword}
+          />
+        </div>
       ) : null}
-    </div>
+    </form>
   )
 }
 

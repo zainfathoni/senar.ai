@@ -128,6 +128,23 @@ export const categories: CategoriesWithIcon = [
   },
 ]
 
+export type CategoryStyle = Pick<
+  CategoryWithIcon,
+  'icon' | 'foregroundColor' | 'backgroundColor'
+>
+
+export const categoriesStyleMap = categories.reduce(
+  (acc, { slug, icon, foregroundColor, backgroundColor }) => {
+    acc[slug] = {
+      icon,
+      foregroundColor,
+      backgroundColor,
+    }
+    return acc
+  },
+  {} as Record<string, CategoryStyle>
+)
+
 export const categoriesRecord: Record<string, CategoryWithIcon> =
   categories.reduce((acc, category) => {
     acc[category.slug] = category
@@ -151,6 +168,31 @@ export const getCategoryByCategorySlug = (
 
 export async function getAllCategories() {
   const categories = await db.category.findMany({
+    orderBy: {
+      id: 'asc',
+    },
+  })
+
+  return categories
+}
+
+export async function findAllCategories(keyword: string) {
+  const categories = await db.category.findMany({
+    where: {
+      OR: [
+        {
+          slug: {
+            contains: keyword,
+          },
+          title: {
+            contains: keyword,
+          },
+          description: {
+            contains: keyword,
+          },
+        },
+      ],
+    },
     orderBy: {
       id: 'asc',
     },
