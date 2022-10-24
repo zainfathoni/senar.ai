@@ -3,7 +3,7 @@ import { HomePage } from './pages/home.page';
 
 const { expect } = test;
 
-test.describe('Senarai Homepage E2E Test', () => {
+test.describe('Senarai Home page E2E Test', () => {
     let homePage: HomePage;
 
     test.beforeEach(async ({ page }) => {
