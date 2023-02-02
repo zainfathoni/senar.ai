@@ -37,7 +37,7 @@ export function ActionCards({
             </span>
           </div>
           <div className="mt-8">
-            <h3 className="text-lg font-medium">
+            <h2 className="text-lg font-medium">
               <Link
                 to={`/activities/${category.slug}`}
                 className="focus:outline-none"
@@ -46,7 +46,7 @@ export function ActionCards({
                 <span className="absolute inset-0" aria-hidden="true" />
                 {category.title}
               </Link>
-            </h3>
+            </h2>
             <p className="mt-2 text-sm text-gray-500">
               {category.description ??
                 'Doloribus dolores nostrum quia qui natus officia quod et dolorem. Sit repellendus qui ut at blanditiis et quo et molestiae.'}
