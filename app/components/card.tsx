@@ -7,8 +7,8 @@ import { ArrowUpRightFromSquare, PenToSquare } from '../icons/duotone'
 export type CardProps = {
   name: string
   description: string
-  cta: string
-  link: string
+  cta?: string
+  link?: string
   secondaryCta?: string
   secondaryLink?: string
   category: string
