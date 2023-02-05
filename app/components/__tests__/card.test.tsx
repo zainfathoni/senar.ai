@@ -9,8 +9,8 @@ import { Card, CardContainer } from '../card'
 import { Grid2Plus } from '../../icons/duotone'
 import { activityBuilder } from '../../model/__mocks__/activities'
 import { categoryBuilder } from '../../model/__mocks__/categories'
+import { contactBuilder } from '../..//model/__mocks__/contacts'
 import { uncategorized } from '../../model/categories'
-import { contactBuilder } from '~/model/__mocks__/contacts'
 
 describe('Card', () => {
   it('renders activity in Card component correctly', () => {
