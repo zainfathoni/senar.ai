@@ -42,7 +42,7 @@ describe('Card', () => {
     const { name, description } = activityBuilder()
     const { title, slug } = categoryBuilder()
     const cta = faker.lorem.text()
-    const url = faker.system.fileName()
+    const url = faker.lorem.slug()
     const secondaryUrl = faker.internet.url()
     const secondaryCta = faker.lorem.text()
     render(
