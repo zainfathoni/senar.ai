@@ -1,13 +1,21 @@
 import { Category } from '@prisma/client'
+import { Await } from '@remix-run/react'
+import { Suspense } from 'react'
 import { PrimaryButton } from './button'
 import { SecondaryButtonLink } from './button-link'
 import { Input, Instruction, Label } from './form-elements'
 
 type ContributionFormProps = {
-  categories: Omit<Category, 'id' | 'createdAt' | 'updatedAt'>[]
+  categories?: Omit<Category, 'id' | 'createdAt' | 'updatedAt'>[]
+  categoriesPromise?: Promise<
+    Omit<Category, 'id' | 'createdAt' | 'updatedAt'>[]
+  >
 }
 
-export function ContributionFormFields({ categories }: ContributionFormProps) {
+export function ContributionFormFields({
+  categories,
+  categoriesPromise,
+}: ContributionFormProps) {
   return (
     <>
       <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
@@ -31,11 +39,36 @@ export function ContributionFormFields({ categories }: ContributionFormProps) {
                   name="category"
                   className="sm:max-w-xs"
                 >
-                  {categories.map(({ title, slug }) => (
-                    <option key={slug} value={slug}>
-                      {title}
-                    </option>
-                  ))}
+                  {categories ? (
+                    categories.map(({ title, slug }) => (
+                      <option key={slug} value={slug}>
+                        {title}
+                      </option>
+                    ))
+                  ) : (
+                    <Suspense
+                      fallback={
+                        <option key="placeholder" value="Memuat kategori..." />
+                      }
+                    >
+                      <Await
+                        resolve={categoriesPromise}
+                        errorElement={
+                          <option key="nothing" value="Gagal memuat kategori" />
+                        }
+                      >
+                        {(promisedCategories) => (
+                          <>
+                            {promisedCategories?.map(({ title, slug }) => (
+                              <option key={slug} value={slug}>
+                                {title}
+                              </option>
+                            ))}
+                          </>
+                        )}
+                      </Await>
+                    </Suspense>
+                  )}
                 </Input>
               </div>
             </div>

@@ -1,5 +1,11 @@
 import { Category } from '@prisma/client'
-import { ActionFunction, LoaderFunction, redirect, json } from '@remix-run/node'
+import {
+  ActionFunction,
+  LoaderFunction,
+  redirect,
+  json,
+  defer,
+} from '@remix-run/node'
 import { Form, useLoaderData } from '@remix-run/react'
 import { ContributionFormFields } from '~/components/contribution-form-fields'
 import { createActivity } from '~/model/activities'
@@ -9,9 +15,13 @@ import { Handle } from '~/model/types'
 export const handle: Handle = { name: 'Tambahkan Aktivitas Baru' }
 
 export const loader: LoaderFunction = async () => {
-  const categories = await getAllCategories()
+  // const categories = await getAllCategories()
+  const categoriesPromise = getAllCategories()
 
-  return json({ categories })
+  return defer({
+    // categories,
+    categoriesPromise,
+  })
 }
 
 export const action: ActionFunction = async ({ request }) => {
@@ -47,12 +57,18 @@ export const action: ActionFunction = async ({ request }) => {
 }
 
 export default function NewContribution() {
-  const { categories } = useLoaderData<{ categories: Category[] }>()
+  const { categories, categoriesPromise } = useLoaderData<{
+    categories?: Category[]
+    categoriesPromise?: Promise<Category[]>
+  }>()
 
   return (
     <div className="p-8 rounded-lg bg-white overflow-hidden shadow">
       <Form method="post" className="space-y-8 divide-y divide-gray-200">
-        <ContributionFormFields categories={categories} />
+        <ContributionFormFields
+          categories={categories}
+          categoriesPromise={categoriesPromise}
+        />
       </Form>
     </div>
   )
