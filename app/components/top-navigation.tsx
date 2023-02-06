@@ -103,6 +103,7 @@ export const TopNavigation: React.FC<TopNavigationProps> = (
                           </a>
                         ) : (
                           <Link
+                            prefetch="intent"
                             to={item.href}
                             key={item.name}
                             className={classNames(
