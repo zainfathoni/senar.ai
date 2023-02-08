@@ -5,7 +5,6 @@ const { expect } = test
 
 test('Contributing a new activity', async ({
   page,
-  // noscript,
   queries: { getByRole, getByText },
 }) => {
   const { name, description, url } = activityBuilder()
