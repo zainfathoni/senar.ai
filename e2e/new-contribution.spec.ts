@@ -16,9 +16,12 @@ test('Contributing a new activity', async ({
     name: /kategori usia/i,
   })
   await expect(category).not.toHaveValue('sma')
-  await category.selectOption('sma')
+  // Expect 'loading' category as the only option when JavaScript is unavailable
+  // const expectedCategory = noscript ? 'loading' : 'sma'
+  const expectedCategory = 'sma'
+  await category.selectOption(expectedCategory)
   // Expect the value to be 'sma'
-  await expect(category).toHaveValue('sma')
+  await expect(category).toHaveValue(expectedCategory)
 
   // Locate Nama Kegiatan textbox (case insensitive).
   const nameInput = await getByRole('textbox', {
@@ -51,7 +54,9 @@ test('Contributing a new activity', async ({
   await submit.click()
 
   // Expects the new URL to be correct.
+  // if (!noscript) {
   await expect(page).not.toHaveURL('/contributions/new')
+  // }
 
   await getByText(name)
   await getByText(description)

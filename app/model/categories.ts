@@ -1,3 +1,4 @@
+import { Category } from '@prisma/client'
 import {
   ChildReaching,
   School,
@@ -27,6 +28,11 @@ export type CategoryWithIcon = {
   foregroundColor: string
   backgroundColor: string
 }
+
+export type CategoryWithoutMetadata = Omit<
+  Category,
+  'id' | 'createdAt' | 'updatedAt'
+>
 
 // TODO: migrate categories to the database
 export const categories: CategoriesWithIcon = [
@@ -150,6 +156,10 @@ export const getCategoryByCategorySlug = (
 }
 
 export async function getAllCategories() {
+  // await new Promise((resolve, reject) => {
+  //   setTimeout(resolve, 1000)
+  //   setTimeout(() => reject(new Error()), 1000)
+  // })
   const categories = await db.category.findMany({
     orderBy: {
       id: 'asc',

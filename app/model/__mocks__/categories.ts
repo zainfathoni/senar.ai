@@ -1,10 +1,8 @@
 import { build, perBuild } from '@jackfranklin/test-data-bot'
 import { faker } from '@faker-js/faker'
-import { Category } from '@prisma/client'
+import { CategoryWithoutMetadata } from '../categories'
 
-export const categoryBuilder = build<
-  Omit<Category, 'id' | 'createdAt' | 'updatedAt'>
->({
+export const categoryBuilder = build<CategoryWithoutMetadata>({
   fields: {
     title: perBuild(() => faker.lorem.text()),
     description: perBuild(() => faker.lorem.sentence()),
