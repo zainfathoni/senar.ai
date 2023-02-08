@@ -1,15 +1,13 @@
-import { Category } from '@prisma/client'
 import { Await } from '@remix-run/react'
 import { Suspense } from 'react'
 import { PrimaryButton } from './button'
 import { SecondaryButtonLink } from './button-link'
 import { Input, Instruction, Label } from './form-elements'
+import { CategoryWithoutMetadata } from '~/model/categories'
 
 type ContributionFormProps = {
-  categories?: Omit<Category, 'id' | 'createdAt' | 'updatedAt'>[]
-  categoriesPromise?: Promise<
-    Omit<Category, 'id' | 'createdAt' | 'updatedAt'>[]
-  >
+  categories?: CategoryWithoutMetadata[]
+  categoriesPromise?: Promise<CategoryWithoutMetadata[]>
 }
 
 export function ContributionFormFields({

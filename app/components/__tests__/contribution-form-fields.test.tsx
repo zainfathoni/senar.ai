@@ -14,6 +14,7 @@ import { Category } from '@prisma/client'
 import { ContributionFormFields } from '../contribution-form-fields'
 import { categoryBuilder } from '~/model/__mocks__/categories'
 import { activityBuilder } from '~/model/__mocks__/activities'
+import { CategoryWithoutMetadata } from '~/model/categories'
 
 describe('ContributionFormFields', () => {
   it('submits form values correctly', async () => {
@@ -60,9 +61,9 @@ describe('ContributionFormFields', () => {
     // Fixtures
     const firstCategory = categoryBuilder()
     const secondCategory = categoryBuilder()
-    const categoriesPromise = new Promise<
-      Omit<Category, 'id' | 'createdAt' | 'updatedAt'>[]
-    >((resolve) => resolve([firstCategory, secondCategory]))
+    const categoriesPromise = new Promise<CategoryWithoutMetadata[]>(
+      (resolve) => resolve([firstCategory, secondCategory])
+    )
 
     const onSubmit = vi.fn((e) => {
       e.preventDefault()
