@@ -67,7 +67,7 @@ export default function NewContribution() {
       <Form method="post" className="space-y-8 divide-y divide-gray-200">
         <ContributionFormFields
           categories={categories}
-          categoriesPromise={categoriesPromise}
+          categoriesPromise={categoriesPromise as Promise<Category[]>}
         />
       </Form>
     </div>
