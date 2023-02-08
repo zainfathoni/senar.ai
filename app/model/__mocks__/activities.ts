@@ -8,7 +8,7 @@ export const activityBuilder = build<
 >({
   fields: {
     name: perBuild(() => faker.commerce.productName()),
-    description: perBuild(() => faker.commerce.productDescription()),
+    description: perBuild(() => faker.lorem.sentence()),
     url: perBuild(() => faker.internet.url()),
     status: oneOf(...Object.values(ACTIVITY_STATUS)),
   },
