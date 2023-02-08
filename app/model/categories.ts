@@ -150,10 +150,10 @@ export const getCategoryByCategorySlug = (
 }
 
 export async function getAllCategories() {
-  await new Promise((resolve, reject) => {
-    setTimeout(resolve, 1000)
-    // setTimeout(() => reject(new Error()), 1000)
-  })
+  // await new Promise((resolve, reject) => {
+  //   setTimeout(resolve, 1000)
+  //   setTimeout(() => reject(new Error()), 1000)
+  // })
   const categories = await db.category.findMany({
     orderBy: {
       id: 'asc',

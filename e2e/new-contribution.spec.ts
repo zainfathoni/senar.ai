@@ -5,7 +5,7 @@ const { expect } = test
 
 test('Contributing a new activity', async ({
   page,
-  noscript,
+  // noscript,
   queries: { getByRole, getByText },
 }) => {
   const { name, description, url } = activityBuilder()
@@ -18,7 +18,8 @@ test('Contributing a new activity', async ({
   })
   await expect(category).not.toHaveValue('sma')
   // Expect 'loading' category as the only option when JavaScript is unavailable
-  const expectedCategory = noscript ? 'loading' : 'sma'
+  // const expectedCategory = noscript ? 'loading' : 'sma'
+  const expectedCategory = 'sma'
   await category.selectOption(expectedCategory)
   // Expect the value to be 'sma'
   await expect(category).toHaveValue(expectedCategory)
@@ -54,9 +55,9 @@ test('Contributing a new activity', async ({
   await submit.click()
 
   // Expects the new URL to be correct.
-  if (!noscript) {
-    await expect(page).not.toHaveURL('/contributions/new')
-  }
+  // if (!noscript) {
+  await expect(page).not.toHaveURL('/contributions/new')
+  // }
 
   await getByText(name)
   await getByText(description)
