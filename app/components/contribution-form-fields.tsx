@@ -48,13 +48,17 @@ export function ContributionFormFields({
                   ) : (
                     <Suspense
                       fallback={
-                        <option key="placeholder" value="Memuat kategori..." />
+                        <option key="loading" value="loading">
+                          Memuat kategori...
+                        </option>
                       }
                     >
                       <Await
                         resolve={categoriesPromise}
                         errorElement={
-                          <option key="nothing" value="Gagal memuat kategori" />
+                          <option key="failed" value="failed">
+                            Gagal memuat kategori!
+                          </option>
                         }
                       >
                         {(promisedCategories) => (
