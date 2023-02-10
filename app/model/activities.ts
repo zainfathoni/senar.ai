@@ -33,8 +33,9 @@ export async function getAllContributions() {
       resolve
       // reject
     ) => {
-      setTimeout(resolve, 1500)
-      //   setTimeout(() => reject(new Error()), 1000)
+      setTimeout(resolve, 0)
+      // setTimeout(resolve, 1500)
+      // etTimeout(() => reject(new Error()), 1000)
     }
   )
   const contributions = await db.activity.findMany({

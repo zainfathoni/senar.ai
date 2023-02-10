@@ -161,8 +161,9 @@ export async function getAllCategories() {
       resolve
       // reject
     ) => {
-      setTimeout(resolve, 1500)
-      //   setTimeout(() => reject(new Error()), 1000)
+      setTimeout(resolve, 0)
+      // setTimeout(resolve, 1500)
+      // setTimeout(() => reject(new Error()), 1000)
     }
   )
   const categories = await db.category.findMany({
