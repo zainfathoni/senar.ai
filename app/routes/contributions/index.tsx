@@ -1,12 +1,9 @@
-import { Activity, Category } from '@prisma/client'
 import type { MetaFunction, LoaderFunction } from '@remix-run/node'
-import { json } from '@remix-run/node'
+import { defer } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
-import { Card, CardContainer } from '~/components/card'
+import { ContributionsList } from '~/components/contributions-list'
 import { getAllContributions } from '~/model/activities'
-import { getCategoryByCategorySlug } from '~/model/categories'
-
-type Contributions = Array<Activity & { category: Category }>
+import { Contribution } from '~/model/contributions'
 
 export const meta: MetaFunction = () => ({
   title: 'Senarai | Semua Kontribusi',
@@ -17,9 +14,13 @@ export const loader: LoaderFunction = async () => {
   // TODO: redirect to `/new` if the user is not authenticated
 
   const contributions = await getAllContributions()
+  // const contributionsPromise = getAllContributions()
 
-  return json(
-    { contributions },
+  return defer(
+    {
+      contributions,
+      // contributionsPromise,
+    },
     {
       headers: {
         'Cache-Control': 'public, max-age=60',
@@ -29,34 +30,15 @@ export const loader: LoaderFunction = async () => {
 }
 
 export default function ContributionsIndex() {
-  const { contributions } = useLoaderData<{
-    contributions: Contributions
+  const { contributions, contributionsPromise } = useLoaderData<{
+    contributions?: Contribution[]
+    contributionsPromise?: Promise<Contribution[]>
   }>()
 
   return (
-    <CardContainer>
-      {contributions?.map(
-        ({ id, name, description, url, category: { title, slug } }) => {
-          const { icon, foregroundColor, backgroundColor } =
-            getCategoryByCategorySlug(slug)
-          return (
-            <Card
-              key={id}
-              name={name}
-              cta="Kunjungi"
-              link={url}
-              secondaryCta="Koreksi"
-              secondaryLink="#"
-              description={description}
-              category={title}
-              categorySlug={slug}
-              icon={icon}
-              foregroundColor={foregroundColor}
-              backgroundColor={backgroundColor}
-            />
-          )
-        }
-      )}
-    </CardContainer>
+    <ContributionsList
+      contributions={contributions}
+      contributionsPromise={contributionsPromise as Promise<Contribution[]>}
+    />
   )
 }

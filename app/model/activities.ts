@@ -2,6 +2,7 @@
 import database from '../data/senarai-db.json'
 import { db } from '../utils/db.server'
 import { getCategoryBySlug } from './categories'
+import { NewContribution } from './contributions'
 import { ACTIVITY_STATUS } from './enum'
 
 export type Activities = Activity[]
@@ -27,6 +28,10 @@ export type Activity = {
 export const activities = database[0].data as unknown as Activities
 
 export async function getAllContributions() {
+  // await new Promise((resolve, reject) => {
+  //   setTimeout(resolve, 1000)
+  //   setTimeout(() => reject(new Error()), 1000)
+  // })
   const contributions = await db.activity.findMany({
     orderBy: {
       createdAt: 'desc',
@@ -42,13 +47,6 @@ export async function getAllContributions() {
   })
 
   return contributions
-}
-
-export type NewContribution = {
-  categorySlug: string
-  name: string
-  description: string
-  url: string
 }
 
 export async function createActivity({

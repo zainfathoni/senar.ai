@@ -68,11 +68,18 @@ jobs:
 
       - name: ⛓ Install Node deps
         uses: bahmutov/npm-install@v1
+      
+      - name: 🥘 Prepare the mock data
+        run: npm run fetch
+
+      - name: 🍽 Generate type definitions from Prisma
+        run: npm run generate:prisma
 
       - name: 🧪 Run unit and integration tests
         run: npm t
         env:
           CI: true
+          DATABASE_URL: file:./test.db
 
       - name: 📊 Upload code coverage reports to Codecov
         uses: codecov/codecov-action@v3
