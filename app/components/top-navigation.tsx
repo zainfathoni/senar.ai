@@ -9,6 +9,7 @@ import {
   X,
 } from '../icons/duotone'
 import Breadcrumbs from './breadcrumbs'
+import { SecondaryButtonLink } from './button-link'
 
 export const senaraiForm = '/go/form'
 
@@ -182,10 +183,15 @@ export const TopNavigation: React.FC<TopNavigationProps> = (
         )}
       </Disclosure>
       <header className="translate-y-11 py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col md:flex-row">
           <h1 className="text-3xl font-bold text-white">{title}</h1>
-          <div className="mt-4 sm:-mt-1 sm:ml-6">
+          <div className="mt-4 md:-mt-1 md:ml-6">
             <Breadcrumbs />
+          </div>
+          <div className="mt-4 md:mt-0 md:ml-auto">
+            <SecondaryButtonLink to="new">
+              Tambahkan Aktivitas
+            </SecondaryButtonLink>
           </div>
         </div>
       </header>
