@@ -7,7 +7,7 @@ export type NewContribution = {
   url: string
 }
 
-export type Contribution = NewContribution & {
+export type Contribution = Omit<NewContribution, 'categorySlug'> & {
   id: string
   category: CategoryWithoutMetadata
 }
