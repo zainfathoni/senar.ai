@@ -8,6 +8,8 @@ test('Viewing contributions list', async ({ page, queries: { getByText } }) => {
 
   await page.goto('/contributions')
 
+  // if (!noscript) {
   await expect(await getByText(nama)).toBeVisible()
   await expect(await getByText(ringkasan)).toBeVisible()
+  // }
 })
