@@ -16,8 +16,8 @@ export const handle: Handle = { name: 'Tambahkan Aktivitas Baru' }
 
 export const loader: LoaderFunction = async () => {
   return defer({
-    // categories: await getAllCategories(),
-    categoriesPromise: getAllCategories(),
+    categories: await getAllCategories(),
+    // categoriesPromise: getAllCategories(),
   })
 }
 

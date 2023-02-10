@@ -15,8 +15,8 @@ export const loader: LoaderFunction = async () => {
 
   return defer(
     {
-      // contributions: await getAllContributions(),
-      contributionsPromise: getAllContributions(),
+      contributions: await getAllContributions(),
+      // contributionsPromise: getAllContributions(),
     },
     {
       headers: {
