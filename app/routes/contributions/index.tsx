@@ -1,11 +1,9 @@
 import type { MetaFunction, LoaderFunction } from '@remix-run/node'
 import { defer } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
-import {
-  Contribution,
-  ContributionsList,
-} from '~/components/contributions-list'
+import { ContributionsList } from '~/components/contributions-list'
 import { getAllContributions } from '~/model/activities'
+import { Contribution } from '~/model/contributions'
 
 export const meta: MetaFunction = () => ({
   title: 'Senarai | Semua Kontribusi',

@@ -1,10 +1,8 @@
-import { Activity, Category } from '@prisma/client'
 import { Await } from '@remix-run/react'
 import { Suspense } from 'react'
 import { Card, CardContainer } from './card'
 import { getCategoryByCategorySlug, uncategorized } from '~/model/categories'
-
-export type Contribution = Activity & { category: Category }
+import { Contribution } from '~/model/contributions'
 
 export type ContributionListProps = {
   contributions?: Contribution[]

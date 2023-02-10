@@ -2,6 +2,7 @@
 import database from '../data/senarai-db.json'
 import { db } from '../utils/db.server'
 import { getCategoryBySlug } from './categories'
+import { NewContribution } from './contributions'
 import { ACTIVITY_STATUS } from './enum'
 
 export type Activities = Activity[]
@@ -46,13 +47,6 @@ export async function getAllContributions() {
   })
 
   return contributions
-}
-
-export type NewContribution = {
-  categorySlug: string
-  name: string
-  description: string
-  url: string
 }
 
 export async function createActivity({
