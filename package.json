@@ -27,7 +27,7 @@
     "test": "is-ci-cli test:coverage test:watch",
     "test:watch": "vitest",
     "test:verbose": "vitest --reporter=verbose",
-    "test:coverage": "vitest --coverage",
+    "test:coverage": "npm run reset:prisma && vitest --coverage",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
