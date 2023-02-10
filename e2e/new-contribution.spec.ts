@@ -58,7 +58,11 @@ test('Contributing a new activity', async ({
   await expect(page).not.toHaveURL('/contributions/new')
   // }
 
-  await getByText(name)
-  await getByText(description)
-  await getByText(url)
+  // Expects the newly created conribution is visible
+  await expect(await getByText(name)).toBeVisible()
+  await expect(await getByText(description)).toBeVisible()
+
+  const link = await getByRole('link', { name: /kunjungi/i })
+  await expect(link).toBeVisible()
+  await expect(link).toHaveAttribute('href', url)
 })
