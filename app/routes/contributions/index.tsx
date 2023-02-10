@@ -13,13 +13,13 @@ export const loader: LoaderFunction = async () => {
   // TODO: requireAuth to see all contribution submissions
   // TODO: redirect to `/new` if the user is not authenticated
 
-  const contributions = await getAllContributions()
-  // const contributionsPromise = getAllContributions()
+  // const contributions = await getAllContributions()
+  const contributionsPromise = getAllContributions()
 
   return defer(
     {
-      contributions,
-      // contributionsPromise,
+      // contributions,
+      contributionsPromise,
     },
     {
       headers: {

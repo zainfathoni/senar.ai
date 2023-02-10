@@ -15,12 +15,12 @@ import { Handle } from '~/model/types'
 export const handle: Handle = { name: 'Tambahkan Aktivitas Baru' }
 
 export const loader: LoaderFunction = async () => {
-  const categories = await getAllCategories()
-  // const categoriesPromise = getAllCategories()
+  // const categories = await getAllCategories()
+  const categoriesPromise = getAllCategories()
 
   return defer({
-    categories,
-    // categoriesPromise,
+    // categories,
+    categoriesPromise,
   })
 }
 
