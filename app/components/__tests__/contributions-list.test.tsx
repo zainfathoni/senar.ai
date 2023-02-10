@@ -5,8 +5,8 @@
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { ContributionsList } from '../contributions-list'
-import { contributionBuilder } from '../../model/__mocks__/contributions'
-import { Contribution } from '../../model/contributions'
+import { contributionBuilder } from '~/model/__mocks__/contributions'
+import { Contribution } from '~/model/contributions'
 
 describe('ContributionsList', () => {
   it('renders contributions list correctly', async () => {
