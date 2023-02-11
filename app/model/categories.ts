@@ -162,7 +162,7 @@ export async function getAllCategories() {
       // reject
     ) => {
       setTimeout(resolve, 0)
-      // setTimeout(resolve, 1500)
+      // setTimeout(resolve, 5000)
       // setTimeout(() => reject(new Error()), 1000)
     }
   )
