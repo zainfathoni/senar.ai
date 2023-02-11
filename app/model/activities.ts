@@ -28,10 +28,16 @@ export type Activity = {
 export const activities = database[0].data as unknown as Activities
 
 export async function getAllContributions() {
-  // await new Promise((resolve, reject) => {
-  //   setTimeout(resolve, 1000)
-  //   setTimeout(() => reject(new Error()), 1000)
-  // })
+  await new Promise(
+    (
+      resolve
+      // reject
+    ) => {
+      setTimeout(resolve, 0)
+      // setTimeout(resolve, 5000)
+      // etTimeout(() => reject(new Error()), 1000)
+    }
+  )
   const contributions = await db.activity.findMany({
     orderBy: {
       createdAt: 'desc',

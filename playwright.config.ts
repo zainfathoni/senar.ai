@@ -78,7 +78,7 @@ const config: PlaywrightTestConfig<Fixtures> = {
       use: {
         ...devices['Desktop Chrome'],
         javaScriptEnabled: false,
-        noscript: true,
+        // noscript: true,
       },
     },
   ],
