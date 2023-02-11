@@ -6,7 +6,11 @@ export const PageLayout: React.FC<
 > = (props) => {
   return (
     <div className="min-h-full">
-      <TopNavigation keyword={props.keyword} setKeyword={props.setKeyword} />
+      <TopNavigation
+        keyword={props.keyword}
+        setKeyword={props.setKeyword}
+        searchMode={props.searchMode}
+      />
 
       <main className="-mt-24">
         <div className="max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
