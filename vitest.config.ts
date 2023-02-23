@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   test: {
     alias: { '~': './app' },
-    include: ['**/__tests__/*.test.ts{,x}'],
+    include: ['**/__tests__/**/*.test.ts{,x}'],
     coverage: {
       // Coverage reporters
       all: true,
