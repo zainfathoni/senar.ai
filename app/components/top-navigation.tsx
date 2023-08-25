@@ -1,13 +1,13 @@
-import * as React from 'react'
 import { Disclosure } from '@headlessui/react'
 import { Link, useMatches } from '@remix-run/react'
-import { classNames } from '../utils/class-names'
+import * as React from 'react'
 import {
   ArrowUpRightFromSquare,
   Bars,
   MagnifyingGlass,
   X,
 } from '../icons/duotone'
+import { classNames } from '../utils/class-names'
 import Breadcrumbs from './breadcrumbs'
 import { SecondaryButtonLink } from './button-link'
 
@@ -189,6 +189,7 @@ export const TopNavigation: React.FC<TopNavigationProps> = (
             <Breadcrumbs />
           </div>
           <div className="mt-4 md:mt-0 md:ml-auto">
+            {/* TODO: Conditionally render button only on contributions page */}
             <SecondaryButtonLink to="new">
               Tambahkan Aktivitas
             </SecondaryButtonLink>
