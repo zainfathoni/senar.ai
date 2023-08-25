@@ -1,13 +1,13 @@
-import * as React from 'react'
 import { Disclosure } from '@headlessui/react'
 import { Link, useMatches } from '@remix-run/react'
-import { classNames } from '../utils/class-names'
+import * as React from 'react'
 import {
   ArrowUpRightFromSquare,
   Bars,
   MagnifyingGlass,
   X,
 } from '../icons/duotone'
+import { classNames } from '../utils/class-names'
 import Breadcrumbs from './breadcrumbs'
 import { SecondaryButtonLink } from './button-link'
 
@@ -60,8 +60,11 @@ export const TopNavigation: React.FC<TopNavigationProps> = (
   props: TopNavigationProps
 ) => {
   const matches = useMatches()
-  const currentPathname = matches[1]?.pathname
-  const title = navigation.find(({ href }) => href === currentPathname)?.name
+  const currentPage = matches[1]?.pathname
+  const title = navigation.find(({ href }) => href === currentPage)?.name
+
+  const currentPathname = matches.at(-1)?.pathname
+  console.debug(currentPathname)
 
   return (
     <div className="bg-indigo-600 pb-32">
@@ -109,13 +112,13 @@ export const TopNavigation: React.FC<TopNavigationProps> = (
                             key={item.name}
                             className={classNames(
                               item.priority ? '' : 'hidden lg:inline',
-                              item.href === currentPathname
+                              item.href === currentPage
                                 ? 'bg-indigo-700 text-white'
                                 : 'text-white hover:bg-indigo-500 hover:bg-opacity-75',
                               'rounded-md py-2 px-3 text-sm font-medium'
                             )}
                             aria-current={
-                              item.href === currentPathname ? 'page' : undefined
+                              item.href === currentPage ? 'page' : undefined
                             }
                           >
                             {item.name}
@@ -157,13 +160,13 @@ export const TopNavigation: React.FC<TopNavigationProps> = (
                     to={item.external ? undefined : item.href}
                     className={classNames(
                       item.priority ? 'hidden lg:inline' : '',
-                      item.href === currentPathname
+                      item.href === currentPage
                         ? 'bg-indigo-700 text-white'
                         : 'text-white hover:bg-indigo-500 hover:bg-opacity-75',
                       'block rounded-md py-2 px-3 text-base font-medium'
                     )}
                     aria-current={
-                      item.href === currentPathname ? 'page' : undefined
+                      item.href === currentPage ? 'page' : undefined
                     }
                     target={item.external ? '_blank' : undefined}
                     rel={item.external ? 'noopener noreferrer' : undefined}
@@ -189,9 +192,11 @@ export const TopNavigation: React.FC<TopNavigationProps> = (
             <Breadcrumbs />
           </div>
           <div className="mt-4 md:mt-0 md:ml-auto">
-            <SecondaryButtonLink to="new">
-              Tambahkan Aktivitas
-            </SecondaryButtonLink>
+            {currentPathname === '/contributions/' ? (
+              <SecondaryButtonLink to="new">
+                Tambahkan Aktivitas
+              </SecondaryButtonLink>
+            ) : null}
           </div>
         </div>
       </header>
